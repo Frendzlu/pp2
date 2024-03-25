@@ -18,7 +18,9 @@ public:
 
     Vector2d();
     Vector2d(double x, double y);
-    Vector2d(Vector2d &v);
+    Vector2d(const Vector2d &v);
+    
+    Vector2d& operator=(const Vector2d &v);
 
     Vector2d add(const Vector2d &v) const;
     Vector2d sub(const Vector2d &v) const;
@@ -38,6 +40,8 @@ public:
     Vector2d operator*=(const double &s);
     bool operator==(const Vector2d &v) const;
     bool operator!=(const Vector2d &v) const;
+    const double& operator[](uint i) const;
+    double& operator[](uint i);
 
     void print() const;
 };

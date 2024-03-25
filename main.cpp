@@ -49,7 +49,7 @@ int main() {
     {
         Vector2d::compEpsilon(0.0001);
  
-        const Vector2d v1(2, 3);
+        Vector2d v1(2, 3);
         const Vector2d v2(2.1, 3.1);
         const Vector2d v3 = (v2 - v1) * 0.001;
         const Vector2d v4;
@@ -62,9 +62,18 @@ int main() {
         Vector2d::compEpsilon(0.01);
         std::cout << "v3 == v4: " << std::boolalpha << (v3 == v4) << std::endl;
         std::cout << "v3 != v4: " << std::boolalpha << (v3 != v4) << std::endl;
-        Vector2d target = Vector2d(v4);
-        v4.mult(2);
-        std::cout << target << " vs " << v4 << std::endl;
+        Vector2d target = Vector2d(v1);
+        v1 = v1.mult(2.0);
+        std::cout << target << " vs " << v1 << std::endl;
+
+        Vector2d v0(2, 3);
+        std::cout << "v0: " << v0 << std::endl;
+        std::cout << "v0[5]: " << v0[5] << std::endl;
+        std::cout << "v0[6]: " << v0[6] << std::endl;
+        v0[2] = 2.24;
+        v0[3] = 2.52;
+        std::cout << "v0[1]: " << v0[1] << std::endl;
+        std::cout << "v0[0]: " << v0[0] << std::endl;
     }
  
     return 0;

@@ -11,7 +11,10 @@ Vector2d::Vector2d(): _x(0.), _y(0.) {}
 
 Vector2d::Vector2d(double const x, double const y): _x(x), _y(y) {}
 
-Vector2d::Vector2d(Vector2d &v) _x(v.x()), _y(v.y())
+Vector2d::Vector2d(const Vector2d &v): _x(v.x()), _y(v.y()) {}
+
+Vector2d& Vector2d::operator=(const Vector2d &v) = default;
+
 
 Vector2d &Vector2d::x(const double x) {
     _x = x;
@@ -93,6 +96,14 @@ Vector2d Vector2d::operator+=(const Vector2d &v) {
 Vector2d Vector2d::operator*=(const double &s) {
     *this = mult(s);
     return *this;
+};
+
+const double& Vector2d::operator[](uint i) const {
+    return i&1 ? _y : _x;
+};
+
+double& Vector2d::operator[](uint i) {
+    return i&1 ? _y : _x;
 };
 
 bool Vector2d::operator==(const Vector2d &v) const {
